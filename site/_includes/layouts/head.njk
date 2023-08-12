@@ -3,11 +3,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ title or metadata.title }}</title>
   {# <link rel="manifest" href="/manifest.json" /> #}
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/hugavatar-180x180.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/assets/icons/hugavatar-180x180.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/hugavatar-16x16.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/hugavatar-32x32.png" />
-  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/hugavatar-96x96.png" />
+
+  <link rel="icon" href="/assets/icons/favicon.svg" sizes="any" type="image/svg+xml">
+  <!-- For all browsers -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+
+  <!-- For Google and Android -->
+  <link rel="icon" type="image/png" sizes="48x48" href="/assets/icons/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/icons/favicon-192x192.png">
+
+  <!-- For iPad -->
+  <link rel="apple-touch-icon" type="image/png" sizes="167x167" href="/assets/icons/favicon-167x167.png">
+  <!-- For iPhone -->
+  <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/assets/icons/favicon-180x180.png">
+
   {% if templateClass === 'tmpl-post' %}
   <meta property="og:type" content="article" />
   <meta property="og:image" content="{{  metadata.url + featured_image.src + '.png' }}" />
@@ -19,7 +29,7 @@
   <meta property="og:title" content="{{ title or metadata.title }}" />
   <meta property="og:description" content="{{ summary or metadata.description }}" />
   <meta property="og:url" content="{{ metadata.url + page.url or metadata.url + '/' }}" />
-  <meta property="og:site_name" content="Home of the Marabyte" />
+  <meta property="og:site_name" content="Colour - @sardine/colour" />
   <meta property="og:image:width" content="1280">
   <meta property="og:image:height" content="640">
   <meta property="og:image:alt" content="{{ featured_image.alt or metadata.imageAlt }}">
@@ -61,7 +71,7 @@
       },
        "publisher": {
         "@type": "Organization",
-        "name": "Marabyte",
+        "name": "Sardine",
         "logo": {
           "@type": "ImageObject",
           "url": "{{metadata.image}}"

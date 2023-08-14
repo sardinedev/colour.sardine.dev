@@ -47,16 +47,16 @@ body:not(.menu--open) .menu__nav {
     </div>
     <nav class="menu__nav bg-primary fixed z-10 top-0 bottom-0 left-0 p-4 xl:p-8 mt-16 transition-all overflow-y-auto lg:w-72 xl:w-96 lg:transition-none">
       <h2 class="text-2xl">Documentation</h2>
-      <h3 class="mt-4 text-xl" {% if page.url == '/docs/' %} aria-current="page"{% endif %}>Getting started</h3>
+      <h3 class="mt-4 text-xl" {% if page.url == '/' %} aria-current="page"{% endif %}>Getting started</h3>
       <ul class="flex flex-col ml-3">
-        <li class="flex" {% if page.url == '/docs/#introduction' %} aria-current="page"{% endif %}>
-          <a class="py-2 w-full" href="/docs/#introduction">Introduction</a>
+        <li class="flex" {% if page.url == '/#introduction' %} aria-current="page"{% endif %}>
+          <a class="py-2 w-full" href="/#introduction">Introduction</a>
         </li>
-        <li class="flex" {% if page.url == '/docs/#installation' %} aria-current="page"{% endif %}>
-          <a class="py-2 w-full" href="/docs/#installation">Installation</a>
+        <li class="flex" {% if page.url == '/#installation' %} aria-current="page"{% endif %}>
+          <a class="py-2 w-full" href="/#installation">Installation</a>
         </li>
-        <li class="flex" {% if page.url == '/docs/#usage' %} aria-current="page"{% endif %}>
-          <a class="py-2 w-full" href="/docs/#usage">Usage</a>
+        <li class="flex" {% if page.url == '/#usage' %} aria-current="page"{% endif %}>
+          <a class="py-2 w-full" href="/#usage">Usage</a>
         </li>
       </ul>
       {% set taglist = ['converters', 'util'] %}

@@ -42,3 +42,15 @@ h5 {
 .bg-primary {
   background-color: var(--primary-color);
 }
+
+p {
+  margin-bottom: 1rem;
+}
+
+pre {
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  margin-bottom: 0.25rem;
+}

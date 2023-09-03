@@ -33,3 +33,7 @@ const hexColour = convertCSSRGBtoHex("rgba(255,255,255,.5)");
 console.log(hexColour);
 // expects #ffffff80
 ```
+
+## Playground
+
+<iframe src="/assets/playground/cssrgbtohex.html" title="convertCSSRGBtoHex" width="100%" height="500px" style="border:0; overflow:hidden;" sandbox="allow-scripts allow-same-origin"></iframe>

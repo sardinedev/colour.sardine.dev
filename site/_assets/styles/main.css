@@ -19,8 +19,9 @@
     #ffe000 113% 113%
   );
   --inline-code: conic-gradient(
-    from 85deg at 56% 145%, 
-    #ff4700 49% 49%, #829fff 99% 99%
+    from 85deg at 56% 145%,
+    #ff4700 49% 49%,
+    #829fff 99% 99%
   );
   @supports (background: linear-gradient(in oklab, black, white)) {
     --heading-gradient: radial-gradient(
@@ -58,6 +59,24 @@ h1 {
   -webkit-text-fill-color: transparent;
 }
 
+a {
+  text-decoration: underline;
+  text-decoration-thickness: 0.125em;
+  text-decoration-color: var(--links-color);
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+pre {
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  margin-bottom: 0.25rem;
+}
+
 .article {
   & h2 {
     font-size: 1.5rem;
@@ -83,16 +102,4 @@ h1 {
 
 .bg-primary {
   background-color: var(--primary-color);
-}
-
-p {
-  margin-bottom: 1rem;
-}
-
-pre {
-  margin-bottom: 1.5rem;
-}
-
-h2 {
-  margin-bottom: 0.25rem;
 }

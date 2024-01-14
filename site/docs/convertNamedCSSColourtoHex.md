@@ -1,5 +1,5 @@
 ---
-title: Convert a named CSS colours to Hexadecimal
+title: Convert a named CSS colour to Hexadecimal
 code: true
 tags:
   - converters
@@ -17,7 +17,7 @@ Returns `undefined` if the colour is not found.
 ## Signature
 
 ```typescript
-function convertNamedCSSColourtoHex(name: string): string;
+function convertNamedCSSColourtoHex(name: NamedCSSColour): string | undefined;
 ```
 
 ## Example

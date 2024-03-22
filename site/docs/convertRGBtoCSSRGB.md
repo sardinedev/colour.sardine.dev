@@ -9,7 +9,7 @@ tags:
 
 This function converts RGB colours into CSS RGB.
 
-It accepts an RGB object and converts it into a string in the format `rgb(R G B)` or `rgb(R G B / A)` if the alpha channel is present.
+Accepts a RGB object and converts it into a string in the format `rgb(R G B)` or `rgb(R G B / A)` if the alpha channel is present.
 
 ## Signature
 

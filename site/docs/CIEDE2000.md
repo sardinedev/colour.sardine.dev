@@ -2,7 +2,7 @@
 title: Color difference - CIEDE2000
 code: true
 tags:
-  - util
+  - utility functions
 ---
 
 ## Description

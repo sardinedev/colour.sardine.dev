@@ -1,5 +1,5 @@
 ---
-title: Convert Hexadecimal to RGB
+title: Convert Hexadecimal to RGB object
 code: true
 tags:
   - converters
@@ -32,3 +32,7 @@ const rgbColour = convertHextoRGB("#FFFFFF");
 console.log(rgbColour);
 // expects { R: 255, G: 255, B: 255 }
 ```
+
+## Playground
+
+<iframe src="/assets/playground/convertHextoRGB.html" title="convertHextoRGB" width="100%" height="500px" style="border:0; overflow:hidden;" sandbox="allow-scripts allow-same-origin"></iframe>

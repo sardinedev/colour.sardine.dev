@@ -54,12 +54,12 @@
       }
     </style>
     <script type="module">
-      import { convertCSSRGBtoHex } from "https://unpkg.com/@sardine/colour@2.1.1-rc.1.0/dist/index.min.js";
+      import { convertCSSRGBtoRGB } from "https://unpkg.com/@sardine/colour@2.1.1-rc.1.0/dist/index.min.js";
       function convertOnSubmit(rgb) {
         try {
-          const hex = convertCSSRGBtoHex(rgb);
-          document.getElementById("result").innerHTML = hex;
-          document.getElementById("result").style.backgroundColor = hex;
+          const res = convertCSSRGBtoRGB(rgb);
+          document.getElementById("result").innerHTML = JSON.stringify(res);
+          document.getElementById("result").style.backgroundColor = rgb;
         } catch (error) {
           document.getElementById("result").innerHTML = error;
         }

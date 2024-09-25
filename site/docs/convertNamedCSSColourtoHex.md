@@ -10,7 +10,7 @@ tags:
 Converts a named CSS Colour in an hexadecimal one.
 
 List of colours sourced here:
-https://developer.mozilla.org/en-US/docs/Web/CSS/named-color
+[https://developer.mozilla.org/en-US/docs/Web/CSS/named-color](https://developer.mozilla.org/en-US/docs/Web/CSS/named-color)
 
 Returns `undefined` if the colour is not found.
 
@@ -29,3 +29,7 @@ const hexColour = convertNamedCSSColourtoHex("papayawhip");
 console.log(hexColour);
 // expects #FFEFD5
 ```
+
+## Playground
+
+<iframe src="/assets/playground/convertNamedCSSColourtoHex.html" title="convertNamedCSSColourtoHex" width="100%" height="500px" style="border:0; overflow:hidden;" sandbox="allow-scripts allow-same-origin"></iframe>

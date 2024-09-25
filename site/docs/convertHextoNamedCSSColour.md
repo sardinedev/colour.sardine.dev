@@ -25,3 +25,7 @@ const namedColour = convertHextoNamedCSSColour(hexColour);
 console.log(namedColour);
 // expects chartreuse
 ```
+
+## Playground
+
+<iframe src="/assets/playground/convertHextoNamedCSSColour.html" title="convertHextoNamedCSSColour" width="100%" height="500px" style="border:0; overflow:hidden;" sandbox="allow-scripts allow-same-origin"></iframe>

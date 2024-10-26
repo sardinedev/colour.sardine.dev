@@ -33,3 +33,7 @@ const rgbColour = convertCSSRGBtoRGB("rgba(255,255,255,.5)");
 console.log(rgbColour);
 // expects { R: 255, G: 255, B: 255, A: 0.5 }
 ```
+
+## Playground
+
+<iframe src="/assets/playground/convertCSSRGBtoRGB.html" title="convertCSSRGBtoRGB" width="100%" height="500px" style="border:0; overflow:hidden;" sandbox="allow-scripts allow-same-origin"></iframe>

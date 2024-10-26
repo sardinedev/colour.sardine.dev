@@ -54,12 +54,18 @@
       }
     </style>
     <script type="module">
-      import { convertCSSRGBtoHex } from "https://unpkg.com/@sardine/colour@2.1.1-rc.1.0/dist/index.min.js";
-      function convertOnSubmit(rgb) {
+      import {
+        convertHextoRGB,
+        isHexDarkColour,
+      } from "https://unpkg.com/@sardine/colour@2.1.1-rc.1.0/dist/index.min.js";
+      function convertOnSubmit(input) {
         try {
-          const hex = convertCSSRGBtoHex(rgb);
-          document.getElementById("result").innerHTML = hex;
-          document.getElementById("result").style.backgroundColor = hex;
+          const res = convertHextoRGB(input);
+          document.getElementById("result").innerHTML = JSON.stringify(res);
+          document.getElementById("result").style.backgroundColor = input;
+          document.getElementById("result").style.color = isHexDarkColour(input)
+            ? "#fff"
+            : "#000";
         } catch (error) {
           document.getElementById("result").innerHTML = error;
         }
@@ -68,16 +74,11 @@
     </script>
   </head>
   <body>
-    <label for="rgb">Type a colour in the CSS RGB format</label>
-    <input
-      type="text"
-      id="rgb"
-      class="input"
-      placeholder="rgb(255, 255, 255)"
-    />
+    <label for="hex">Type a colour in the hexadecimal format</label>
+    <input type="text" id="hex" class="input" placeholder="#f5fffa" />
     <button
       type="button"
-      onclick="convertOnSubmit(document.getElementById('rgb').value)"
+      onclick="convertOnSubmit(document.getElementById('hex').value)"
     >
       Convert
     </button>

@@ -2,7 +2,7 @@
 title: RGB distance
 code: true
 tags:
-  - util
+  - utility functions
 ---
 
 ## Description

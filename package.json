@@ -18,7 +18,7 @@
   },
   "homepage": "https://colour.sardine.dev",
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.0",
+    "@11ty/eleventy": "^3.0.0",
     "@sardine/eleventy-plugin-code-highlighter": "^1.2.0",
     "@sardine/eleventy-plugin-external-links": "^1.4.0",
     "@sardine/eleventy-plugin-image-optimiser": "^1.2.0",

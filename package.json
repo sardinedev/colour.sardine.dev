@@ -1,32 +1,18 @@
 {
-  "name": "colour.sardine.dev",
-  "version": "1.0.0",
-  "description": "Documentation website for @sardine/colour",
-  "main": "index.js",
+  "name": "astro",
+  "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "build": "ELEVENTY_ENV=production npx @11ty/eleventy --config=.eleventy.cjs",
-    "start": "ELEVENTY_ENV=development npx @11ty/eleventy --config=.eleventy.cjs --serve"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sardinedev/colour.sardine.dev.git"
-  },
-  "author": "Hugo Nogueira",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/sardinedev/colour.sardine.dev/issues"
-  },
-  "homepage": "https://colour.sardine.dev",
-  "devDependencies": {
-    "@11ty/eleventy": "^3.0.0",
-    "@sardine/eleventy-plugin-code-highlighter": "^1.2.0",
-    "@sardine/eleventy-plugin-external-links": "^1.4.0",
-    "@sardine/eleventy-plugin-image-optimiser": "^1.2.0",
-    "@sardine/eleventy-plugin-tinycss": "^2.0.0",
-    "@sardine/eleventy-plugin-tinyhtml": "^0.2.0",
-    "autoprefixer": "^10.4.8",
-    "postcss": "^8.4.16",
-    "@biomejs/biome": "^1.0.0",
-    "tailwindcss": "^3.1.8"
+  "dependencies": {
+    "@astrojs/mdx": "^4.3.0",
+    "@astrojs/prism": "^3.3.0",
+    "@tailwindcss/vite": "^4.1.11",
+    "astro": "^5.11.0",
+    "tailwindcss": "^4.1.11"
   }
 }

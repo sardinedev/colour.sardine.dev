@@ -1,64 +1,40 @@
 ---
+import { getCollection } from "astro:content";
+
 export interface Props {
   currentPath?: string;
 }
 
 const { currentPath } = Astro.props;
+// Get all posts from the "docs" collection
+const posts = await getCollection("docs");
 
-// Define navigation structure
-const navigation = {
-  gettingStarted: [
-    { title: "Introduction", href: "/#introduction" },
-    { title: "Installation", href: "/#installation" },
-  ],
-  converters: [
-    {
-      title: "Convert CSS RGB to Hexadecimal",
-      href: "/docs/convert-css-rgb-to-hexadecimal/",
-    },
-    { title: "Convert CSS RGB to RGB", href: "/docs/convert-css-rgb-to-rgb/" },
-    {
-      title: "Convert Hexadecimal to named CSS colour",
-      href: "/docs/convert-hexadecimal-to-named-css-colour/",
-    },
-    {
-      title: "Convert Hexadecimal to RGB object",
-      href: "/docs/convert-hexadecimal-to-rgb-object/",
-    },
-    {
-      title: "Convert a named CSS colour to Hexadecimal",
-      href: "/docs/convert-a-named-css-colour-to-hexadecimal/",
-    },
-    {
-      title: "Convert a named CSS colour to RGB object",
-      href: "/docs/convert-a-named-css-colour-to-rgb-object/",
-    },
-    { title: "Convert RGB to CSS RGB", href: "/docs/convert-rgb-to-css-rgb/" },
-    {
-      title: "Convert RGB to Hexadecimal",
-      href: "/docs/convert-rgb-to-hexadecimal/",
-    },
-    { title: "Convert RGB to Lab", href: "/docs/convert-rgb-to-lab/" },
-    {
-      title: "Convert RGB colour object to named CSS colour",
-      href: "/docs/convert-rgb-colour-object-to-named-css-colour/",
-    },
-    { title: "Convert RGB to XYZ", href: "/docs/convert-rgb-to-xyz/" },
-    { title: "Convert XYZ to Lab", href: "/docs/convert-xyz-to-lab/" },
-  ],
-  utilityFunctions: [
-    {
-      title: "Color difference - CIEDE2000",
-      href: "/docs/color-difference-ciede2000/",
-    },
-    { title: "RGB distance", href: "/docs/rgb-distance/" },
-    {
-      title: "Find nearest CSS RGB Colour",
-      href: "/docs/find-nearest-css-rgb-colour/",
-    },
-    { title: "Find nearest colour", href: "/docs/find-nearest-colour/" },
-  ],
-};
+// Group posts by their tag
+const groupedPosts: Record<string, Array<{ title: string; href: string }>> = {};
+
+for (const post of posts) {
+  const tag = post.data.tags || "other";
+
+  if (!groupedPosts[tag]) {
+    groupedPosts[tag] = [];
+  }
+
+  groupedPosts[tag].push({
+    title: post.data.title,
+    href: `/docs/${post.data.title.toLowerCase().replace(/\s+/g, "-")}/`,
+  });
+}
+
+// Sort posts within each group by title
+Object.keys(groupedPosts).forEach((tag) => {
+  groupedPosts[tag].sort((a, b) => a.title.localeCompare(b.title));
+});
+
+// Define static navigation items
+const gettingStarted = [
+  { title: "Introduction", href: "/#introduction" },
+  { title: "Installation", href: "/#installation" },
+];
 ---
 
 <aside class="menu xl:w-96">
@@ -147,7 +123,7 @@ const navigation = {
       <h3 class="mt-4 text-xl">Getting started</h3>
       <ul class="flex flex-col ml-3">
         {
-          navigation.gettingStarted.map((item) => (
+          gettingStarted.map((item) => (
             <li class="flex">
               <a class="py-2 w-full" href={item.href}>
                 {item.title}
@@ -160,7 +136,7 @@ const navigation = {
       <h3 class="mt-4 text-xl capitalize">converters</h3>
       <ul class="flex flex-col ml-3">
         {
-          navigation.converters.map((item) => (
+          (groupedPosts["converters"] || []).map((item) => (
             <li
               class="flex"
               class:list={[currentPath === item.href && "aria-current"]}
@@ -176,7 +152,7 @@ const navigation = {
       <h3 class="mt-4 text-xl capitalize">utility functions</h3>
       <ul class="flex flex-col ml-3">
         {
-          navigation.utilityFunctions.map((item) => (
+          (groupedPosts["utility functions"] || []).map((item) => (
             <li
               class="flex"
               class:list={[currentPath === item.href && "aria-current"]}

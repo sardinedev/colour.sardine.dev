@@ -8,7 +8,10 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   integrations: [mdx()],
   markdown: {
-    syntaxHighlight: "prism",
+    syntaxHighlight: "shiki",
+    shikiConfig: {
+      theme: "dracula",
+    },
   },
   vite: {
     plugins: [tailwindcss()],

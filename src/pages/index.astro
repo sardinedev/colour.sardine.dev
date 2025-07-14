@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-
+import { Code } from "astro:components";
 const title = "Colour, small javascript utilities for colour manipulation";
 const description =
   "@sardine/colour is a tiny JavaScript utility library for colours.";
@@ -24,7 +24,10 @@ const description =
     <p>With Node you can install the package:</p>
     <pre><code class="language-bash">npm install --save @sardine/colour</code></pre>
     <p>With Deno you can import the package:</p>
-    <pre><code class="language-typescript">import &#123; convertHextoRGB  &#125; from "https://deno.land/x/sardine_colour/index.ts";</code></pre>
+    <Code
+      code={`import { convertHextoRGB } from "https://deno.land/x/sardine_colour/index.ts";`}
+      lang="js"
+    />
     <p>
       And that's it! You're ready to start using <code>@sardine/colour</code>.
     </p>

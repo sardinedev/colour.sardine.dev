@@ -165,6 +165,134 @@ npm run build        # Production build
 npm run preview      # Test production build locally
 ```
 
+## Function Documentation Workflow
+
+When documenting new functions from the `@sardine/colour` library, follow this step-by-step process to ensure quality and proper review:
+
+### Step 1: Research the Function
+
+1. **Identify the function** from the GitHub issues tracker (issues #61-#78)
+2. **Research function signature** using the library source code at `github.com/sardinedev/colour`
+3. **Study test files** to understand parameters, return types, and edge cases
+4. **Review existing documentation** for similar functions to maintain consistency
+
+### Step 2: Create Feature Branch
+
+```bash
+# Create a new branch for the specific function
+git checkout -b docs/functionName
+
+# Example: git checkout -b docs/convertHextoCSSRGB
+```
+
+### Step 3: Create Documentation
+
+1. **Create documentation file**: `src/docs/functionName.md`
+2. **Required frontmatter structure**:
+   ```yaml
+   ---
+   title: Descriptive Function Title
+   code: true
+   tags: converters | utility functions
+   ---
+   ```
+3. **Content sections to include**:
+   - **Description**: What the function does and supported formats
+   - **Signature**: TypeScript function signature
+   - **Examples**: Multiple practical examples covering edge cases
+   - **Error Handling**: Common errors and how to handle them
+   - **Playground Link**: Link to an interactive demo inside an iframe
+
+### Step 4: Create Interactive Playground
+
+1. **Create playground file**: `public/playground/functionName.html`
+2. **Include features**:
+   - Live demo with real-time conversion
+   - Visual feedback showing results
+   - Error handling with user-friendly messages
+   - Example suggestions for users to try
+   - Consistent styling with site design
+3. **Library import**: Use unpkg CDN with specific version
+   ```javascript
+   import { functionName } from "https://unpkg.com/@sardine/colour@2.1.1-rc.1.0/dist/index.min.js";
+   ```
+
+### Step 5: Test Documentation
+
+1. **Start dev server**: `npm run dev`
+2. **Verify navigation**: Check function appears in navigation menu
+3. **Test playground**: Ensure interactive demo works correctly
+4. **Validate examples**: Confirm all code examples work as expected
+5. **Check responsive design**: Test on different screen sizes
+
+### Step 6: Commit and Push
+
+```bash
+# Stage the files
+git add src/docs/functionName.md public/playground/functionName.html
+
+# Commit with descriptive message that references the issue
+git commit -m "docs: add functionName documentation and playground
+
+- Add comprehensive documentation for functionName function
+- Include function signature, parameters, return type, and examples
+- Add interactive playground demo with real-time conversion
+- Support for [list key features]
+- Proper error handling documentation
+
+Closes #XX"
+
+# Push the branch
+git push -u origin docs/functionName
+```
+
+### Step 7: Create Pull Request
+
+1. **Create PR** linking to the documentation issue
+2. **Use descriptive title**: `docs: add functionName documentation and playground`
+3. **Include comprehensive description**:
+   - What's included (documentation + playground)
+   - Key features implemented
+   - Testing checklist
+   - Progress update
+4. **Link to issue**: Include "Closes #XX" in PR description
+5. **Request review**: Assign reviewers for quality control
+
+### Step 8: Address Review Feedback
+
+1. **Make requested changes** on the feature branch
+2. **Push updates** to automatically update the PR
+3. **Respond to comments** with explanations or confirmations
+
+### Step 9: Merge and Cleanup
+
+1. **Merge PR** when approved (this will automatically close the linked issue)
+2. **Delete feature branch** after merge
+3. **Update main branch** locally
+4. **Update progress tracking** in issue #2 if needed
+
+### Quality Checklist
+
+Before creating a PR, ensure:
+
+- [ ] Function signature is accurate and uses TypeScript types
+- [ ] All supported formats/parameters are documented with examples
+- [ ] Error handling section includes real error messages
+- [ ] British spelling ("colour") is used consistently
+- [ ] Examples use correct import syntax
+- [ ] Playground demo works without errors
+- [ ] Documentation follows existing patterns
+- [ ] Frontmatter tags are correct ("converters" or "utility functions")
+- [ ] Navigation updates automatically show the new function
+
+### Documentation Standards
+
+- **Tone**: Clear, professional, helpful
+- **Code Examples**: Always include imports and realistic use cases
+- **Error Examples**: Show actual error messages from the library
+- **Playground Features**: Real-time conversion, visual feedback, error handling
+- **Consistency**: Follow patterns from existing documentation files
+
 ## Important Considerations
 
 ### Performance Optimizations

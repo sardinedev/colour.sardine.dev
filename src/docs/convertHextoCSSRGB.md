@@ -81,7 +81,15 @@ The function will throw an error if:
 ```javascript
 import { convertHextoCSSRGB } from "@sardine/colour";
 
-// This will throw an error
+// Error: Invalid input type
+try {
+  convertHextoCSSRGB(123456);
+} catch (error) {
+  console.error(error.message);
+  // "convertHextoRGB expects a string but got a number"
+}
+
+// Error: Invalid hexadecimal format
 try {
   convertHextoCSSRGB("invalid-hex");
 } catch (error) {
@@ -89,3 +97,9 @@ try {
   // "convertHextoRGB expects an valid hexadecimal colour value but got invalid-hex"
 }
 ```
+
+## Interactive Demo
+
+Try the function yourself with our interactive playground:
+
+<iframe src="/playground/convertHextoCSSRGB.html" width="100%" height="400" style="border: 1px solid #ccc; border-radius: 8px;"></iframe>

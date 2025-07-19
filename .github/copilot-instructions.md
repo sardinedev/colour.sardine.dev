@@ -197,25 +197,100 @@ git checkout -b docs/functionName
    ---
    ```
 3. **Content sections to include**:
+
    - **Description**: What the function does and supported formats
    - **Signature**: TypeScript function signature
    - **Examples**: Multiple practical examples covering edge cases
    - **Error Handling**: Common errors and how to handle them
-   - **Playground Link**: Link to an interactive demo inside an iframe
+   - **Interactive Demo**: MUST use exact iframe styling below
+
+4. **Required iframe styling** (must match existing documentation exactly):
+
+   ```html
+   ## Interactive Demo Try the function yourself with our interactive
+   playground:
+
+   <iframe
+     src="/playground/functionName.html"
+     title="functionName"
+     width="100%"
+     height="500px"
+     style="border:0; overflow:hidden;"
+     sandbox="allow-scripts allow-same-origin"
+   ></iframe>
+   ```
+
+   - **Height**: Must be `height="500px"` (NOT 400px or other values)
+   - **Border**: Must be `style="border:0; overflow:hidden;"` (NO custom borders or border-radius)
+   - **Title**: Must include `title="functionName"` attribute
+   - **Sandbox**: Must include `sandbox="allow-scripts allow-same-origin"` for security
 
 ### Step 4: Create Interactive Playground
 
 1. **Create playground file**: `public/playground/functionName.html`
-2. **Include features**:
-   - Live demo with real-time conversion
-   - Visual feedback showing results
-   - Error handling with user-friendly messages
-   - Example suggestions for users to try
-   - Consistent styling with site design
-3. **Library import**: Use unpkg CDN with specific version
-   ```javascript
-   import { functionName } from "https://unpkg.com/@sardine/colour@2.1.1-rc.1.0/dist/index.min.js";
+2. **Required HTML structure** (must match existing playgrounds exactly):
+
+   ```html
+   <!DOCTYPE html>
+   <html lang="en">
+     <head>
+       <meta charset="UTF-8" />
+       <title>Function Name</title>
+       <style>
+         /* Use EXACT CSS from existing playgrounds */
+         body {
+           color: #fff;
+           margin: 0;
+           font-family: Courier New;
+         }
+         /* Include all standard button, input, label, and #result styles */
+       </style>
+       <script type="module">
+         import { functionName } from "https://unpkg.com/@sardine/colour@2.1.1-rc.1.0/dist/index.min.js";
+         function convertOnSubmit(input) {
+           try {
+             const res = functionName(input);
+             document.getElementById("result").innerHTML = res; // or JSON.stringify(res)
+             // Optional: Set background color if function returns hex/css colors
+             document.getElementById("result").style.backgroundColor = input;
+           } catch (error) {
+             document.getElementById("result").innerHTML = error; // NOT error.message
+           }
+         }
+         window.convertOnSubmit = convertOnSubmit;
+       </script>
+     </head>
+     <body>
+       <label for="input">Type a colour in the [format] format</label>
+       <input type="text" id="input" class="input" placeholder="[example]" />
+       <button
+         type="button"
+         onclick="convertOnSubmit(document.getElementById('input').value)"
+       >
+         Convert
+       </button>
+       <label id="result"></label>
+     </body>
+   </html>
    ```
+
+3. **Critical styling requirements**:
+
+   - **NO custom backgrounds, gradients, or elaborate styling**
+   - **NO title/description text in HTML body**
+   - **NO examples section or extra content**
+   - **NO border-radius, custom borders, or special result styling**
+   - **NO auto-conversion or event listeners** - manual button click only
+   - **NO initial values** - just placeholder in input
+   - **Result element MUST be `<label id="result"></label>`** - NOT div
+   - **Error handling displays `error` NOT `error.message`**
+   - **Match existing playground CSS exactly** - copy from convertHextoRGB.html
+
+4. **Content requirements**:
+   - **Minimal interface**: label → input → button → result only
+   - **Manual conversion**: User must click Convert button
+   - **Simple output**: Display function result directly or as JSON.stringify()
+   - **Visual feedback**: Set backgroundColor when appropriate for color functions
 
 ### Step 5: Test Documentation
 
@@ -285,13 +360,35 @@ Before creating a PR, ensure:
 - [ ] Frontmatter tags are correct ("converters" or "utility functions")
 - [ ] Navigation updates automatically show the new function
 
+#### Playground Styling Checklist
+
+- [ ] Uses exact CSS from existing playgrounds (copy from convertHextoRGB.html)
+- [ ] NO custom backgrounds, gradients, or elaborate styling
+- [ ] NO title/description text in HTML body
+- [ ] NO examples section or extra content in HTML
+- [ ] NO border-radius, custom borders, or special result styling
+- [ ] Result element is `<label id="result"></label>` NOT `<div id="result"></div>`
+- [ ] Error handling displays `error` NOT `error.message`
+- [ ] Manual button click conversion only (NO auto-conversion)
+- [ ] No initial values in input (just placeholder)
+
+#### Documentation iframe Checklist
+
+- [ ] Height is exactly `height="500px"` (NOT 400px)
+- [ ] Style is exactly `style="border:0; overflow:hidden;"` (NO custom borders)
+- [ ] Includes `title="functionName"` attribute
+- [ ] Includes `sandbox="allow-scripts allow-same-origin"` attribute
+- [ ] Uses consistent "Interactive Demo" heading
+- [ ] Uses consistent descriptive text above iframe
+
 ### Documentation Standards
 
 - **Tone**: Clear, professional, helpful
 - **Code Examples**: Always include imports and realistic use cases
 - **Error Examples**: Show actual error messages from the library
-- **Playground Features**: Real-time conversion, visual feedback, error handling
-- **Consistency**: Follow patterns from existing documentation files
+- **Playground Integration**: Seamless iframe embedding with consistent styling
+- **Consistency**: Follow exact patterns from existing documentation files
+- **Styling**: Minimal playground design that integrates into documentation iframe
 
 ## Important Considerations
 

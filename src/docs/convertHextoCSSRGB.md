@@ -104,4 +104,4 @@ try {
 
 Try the function yourself with our interactive playground:
 
-<iframe src="/playground/convertHextoCSSRGB.html" title="convertHextoCSSRGB" width="100%" height="500px" style="border:0; overflow:hidden;" sandbox="allow-scripts allow-same-origin"></iframe>
+<iframe src="/playground/convertHextoCSSRGB" title="convertHextoCSSRGB" width="100%" height="500px" style="border:0; overflow:hidden;" sandbox="allow-scripts allow-same-origin"></iframe>

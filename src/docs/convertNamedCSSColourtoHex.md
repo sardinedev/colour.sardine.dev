@@ -31,4 +31,4 @@ console.log(hexColour);
 
 ## Playground
 
-<iframe src="/playground/convertNamedCSSColourtoHex.html" title="convertNamedCSSColourtoHex" width="100%" height="500px" style="border:0; overflow:hidden;" sandbox="allow-scripts allow-same-origin"></iframe>
+<iframe src="/playground/convertNamedCSSColourtoHex" title="convertNamedCSSColourtoHex" width="100%" height="500px" style="border:0; overflow:hidden;" sandbox="allow-scripts allow-same-origin"></iframe>

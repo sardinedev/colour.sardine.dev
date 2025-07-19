@@ -1,0 +1,39 @@
+---
+import PlaygroundLayout from "../../layouts/PlaygroundLayout.astro";
+---
+
+<PlaygroundLayout title="convertHextoCSSRGB">
+  <script slot="script" is:inline type="module">
+    import {
+      convertHextoCSSRGB,
+      isHexDarkColour,
+    } from "https://unpkg.com/@sardine/colour@2.4.0/dist/index.min.js";
+
+    function convertOnSubmit(input) {
+      try {
+        const res = convertHextoCSSRGB(input);
+        document.getElementById("result").innerHTML = res;
+        document.getElementById("result").style.backgroundColor = input;
+        document.getElementById("result").style.color = isHexDarkColour(input)
+          ? "#fff"
+          : "#000";
+      } catch (error) {
+        document.getElementById("result").innerHTML = error;
+      }
+    }
+
+    window.convertOnSubmit = convertOnSubmit;
+  </script>
+
+  <div slot="body">
+    <label for="hex">Type a colour in the hexadecimal format</label>
+    <input type="text" id="hex" class="input" placeholder="#f5fffa" />
+    <button
+      type="button"
+      onclick="convertOnSubmit(document.getElementById('hex').value)"
+    >
+      Convert
+    </button>
+    <label id="result"></label>
+  </div>
+</PlaygroundLayout>

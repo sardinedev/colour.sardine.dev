@@ -35,4 +35,4 @@ console.log(rgbColour);
 
 ## Playground
 
-<iframe src="/playground/convertCSSRGBtoRGB.html" title="convertCSSRGBtoRGB" width="100%" height="500px" style="border:0; overflow:hidden;" sandbox="allow-scripts allow-same-origin"></iframe>
+<iframe src="/playground/convertCSSRGBtoRGB" title="convertCSSRGBtoRGB" width="100%" height="500px" style="border:0; overflow:hidden;" sandbox="allow-scripts allow-same-origin"></iframe>

@@ -231,76 +231,74 @@ git checkout -b docs/functionName
 
 ### Step 4: Create Interactive Playground
 
-1. **Create playground file**: `public/playground/functionName.html`
-2. **Required HTML structure** (must match existing playgrounds exactly):
+1. **Create playground file**: `src/pages/playground/functionName.astro`
+2. **Use PlaygroundLayout template** with Astro named slots:
 
-   ````html
-   <!DOCTYPE html>
-   <html lang="en">
-     <head>
-       <meta charset="UTF-8" />
-       <title>Function Name</title>
-       <style>
-         /* Use EXACT CSS from existing playgrounds */
-         body {
-           color: #fff;
-           margin: 0;
-           font-family: Courier New;
+   ```astro
+   ---
+   import PlaygroundLayout from "../../layouts/PlaygroundLayout.astro";
+   ---
+
+   <PlaygroundLayout title="Function Name">
+     <script slot="script" is:inline type="module">
+       import { functionName } from "https://unpkg.com/@sardine/colour@2.4.0/dist/index.min.js";
+
+       function convertOnSubmit(input) {
+         try {
+           const res = functionName(input);
+           document.getElementById("result").innerHTML = res; // or JSON.stringify(res)
+           // Optional: Set background color if function returns hex/css colors
+           document.getElementById("result").style.backgroundColor = input;
+         } catch (error) {
+           document.getElementById("result").innerHTML = error; // NOT error.message
          }
-         /* Include all standard button, input, label, and #result styles */
-       </style>
-       <script type="module">
-         3. **Library import**: Use unpkg CDN with specific version
-   ```javascript
-   import { functionName } from "https://unpkg.com/@sardine/colour@2.4.0/dist/index.min.js";
-   ````
+       }
 
-   **Note**: Some functions may be missing from older published packages (e.g., `convertHextoCSSRGB` in v2.1.1-rc.1.0).
-   Always use the latest stable version (currently 2.4.0) to ensure all functions are available.
-   function convertOnSubmit(input) {
-   try {
-   const res = functionName(input);
-   document.getElementById("result").innerHTML = res; // or JSON.stringify(res)
-   // Optional: Set background color if function returns hex/css colors
-   document.getElementById("result").style.backgroundColor = input;
-   } catch (error) {
-   document.getElementById("result").innerHTML = error; // NOT error.message
-   }
-   }
-   window.convertOnSubmit = convertOnSubmit;
-   </script>
-     </head>
-     <body>
-       <label for="input">Type a colour in the [format] format</label>
-       <input type="text" id="input" class="input" placeholder="[example]" />
-       <button
-         type="button"
-         onclick="convertOnSubmit(document.getElementById('input').value)"
-       >
-         Convert
-       </button>
-       <label id="result"></label>
-     </body>
-   </html>
+       window.convertOnSubmit = convertOnSubmit;
+     </script>
+
+     <label for="input">Type a colour in the [format] format</label>
+     <input type="text" id="input" class="input" placeholder="[example]" />
+     <button
+       type="button"
+       onclick="convertOnSubmit(document.getElementById('input').value)"
+     >
+       Convert
+     </button>
+     <label id="result"></label>
+   </PlaygroundLayout>
    ```
 
-3. **Critical styling requirements**:
+3. **Template advantages**:
 
-   - **NO custom backgrounds, gradients, or elaborate styling**
-   - **NO title/description text in HTML body**
-   - **NO examples section or extra content**
-   - **NO border-radius, custom borders, or special result styling**
-   - **NO auto-conversion or event listeners** - manual button click only
-   - **NO initial values** - just placeholder in input
-   - **Result element MUST be `<label id="result"></label>`** - NOT div
-   - **Error handling displays `error` NOT `error.message`**
-   - **Match existing playground CSS exactly** - copy from convertHextoRGB.html
+   - **Consistent styling**: All playgrounds use shared CSS from PlaygroundLayout
+   - **Maintainable**: Changes to layout affect all playgrounds automatically
+   - **Clean separation**: JavaScript logic in script slot, HTML in default slot
+   - **Type safety**: Astro provides TypeScript support and validation
 
-4. **Content requirements**:
+4. **Required iframe reference in documentation**:
+   ```html
+   <iframe
+     src="/playground/functionName.html"
+     title="functionName"
+     width="100%"
+     height="500px"
+     style="border:0; overflow:hidden;"
+     sandbox="allow-scripts allow-same-origin"
+   ></iframe>
+   ```
+   **Note**: Iframes still reference `.html` files in `public/playground/` directory for existing static playgrounds. New Astro template playgrounds in `src/pages/playground/` serve as development templates but documentation iframes continue to use the static HTML files.
+
+**Note**: Some functions may be missing from older published packages (e.g., `convertHextoCSSRGB` in v2.1.1-rc.1.0).
+Always use the latest stable version (currently 2.4.0) to ensure all functions are available.
+
+5. **Content requirements**:
    - **Minimal interface**: label → input → button → result only
    - **Manual conversion**: User must click Convert button
    - **Simple output**: Display function result directly or as JSON.stringify()
    - **Visual feedback**: Set backgroundColor when appropriate for color functions
+   - **Error handling displays `error` NOT `error.message`**
+   - **Script must include `is:inline` directive** for proper browser execution
 
 ### Step 5: Test Documentation
 
@@ -314,7 +312,7 @@ git checkout -b docs/functionName
 
 ```bash
 # Stage the files
-git add src/docs/functionName.md public/playground/functionName.html
+git add src/docs/functionName.md src/pages/playground/functionName.astro
 
 # Commit with descriptive message that references the issue
 git commit -m "docs: add functionName documentation and playground
@@ -374,11 +372,14 @@ Before creating a PR, ensure:
 
 #### Playground Styling Checklist
 
-- [ ] Uses exact CSS from existing playgrounds (copy from convertHextoRGB.html)
-- [ ] NO custom backgrounds, gradients, or elaborate styling
+- [ ] Uses PlaygroundLayout.astro template with named slots
+- [ ] Script slot includes `is:inline` directive for proper browser execution
+- [ ] Import statement uses correct @sardine/colour@2.4.0 version
+- [ ] Function logic placed in script slot with proper error handling
+- [ ] HTML content placed in default slot (no slot name needed)
+- [ ] NO custom styling (uses shared CSS from PlaygroundLayout)
 - [ ] NO title/description text in HTML body
 - [ ] NO examples section or extra content in HTML
-- [ ] NO border-radius, custom borders, or special result styling
 - [ ] Result element is `<label id="result"></label>` NOT `<div id="result"></div>`
 - [ ] Error handling displays `error` NOT `error.message`
 - [ ] Manual button click conversion only (NO auto-conversion)
@@ -392,6 +393,7 @@ Before creating a PR, ensure:
 - [ ] Includes `sandbox="allow-scripts allow-same-origin"` attribute
 - [ ] Uses consistent "Interactive Demo" heading
 - [ ] Uses consistent descriptive text above iframe
+- [ ] URL is `/playground/functionName.html` (with .html extension) since iframes reference static files in public/playground/
 
 ### Documentation Standards
 

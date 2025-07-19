@@ -27,4 +27,4 @@ console.log(namedColour);
 
 ## Playground
 
-<iframe src="/playground/convertHextoNamedCSSColour.html" title="convertHextoNamedCSSColour" width="100%" height="500px" style="border:0; overflow:hidden;" sandbox="allow-scripts allow-same-origin"></iframe>
+<iframe src="/playground/convertHextoNamedCSSColour" title="convertHextoNamedCSSColour" width="100%" height="500px" style="border:0; overflow:hidden;" sandbox="allow-scripts allow-same-origin"></iframe>

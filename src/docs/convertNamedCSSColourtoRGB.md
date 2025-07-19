@@ -33,4 +33,4 @@ console.log(rgbColour);
 
 ## Playground
 
-<iframe src="/playground/convertNamedCSSColourtoRGB.html" title="convertNamedCSSColourtoRGB" width="100%" height="500px" style="border:0; overflow:hidden;" sandbox="allow-scripts allow-same-origin"></iframe>
+<iframe src="/playground/convertNamedCSSColourtoRGB" title="convertNamedCSSColourtoRGB" width="100%" height="500px" style="border:0; overflow:hidden;" sandbox="allow-scripts allow-same-origin"></iframe>

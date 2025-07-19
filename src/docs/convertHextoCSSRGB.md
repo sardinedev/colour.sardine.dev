@@ -18,6 +18,8 @@ If the hexadecimal colour includes an alpha channel (8 or 4 digit format), the f
 
 It will throw an error if a string is not passed or it is in a different format than the one described above.
 
+> **Added in:** `@sardine/colour@2.3.0`
+
 ## Signature
 
 ```typescript

@@ -199,6 +199,10 @@ git checkout -b docs/functionName
 3. **Content sections to include**:
 
    - **Description**: What the function does and supported formats
+   - **Version Note**: When the function was first introduced (e.g., `> **Added in:** @sardine/colour@2.3.0`)
+     - **IMPORTANT**: Always check the official changelog at https://github.com/sardinedev/colour/blob/main/CHANGELOG.md
+     - Search for the function name to find the exact version where it was first added
+     - Do NOT guess the version - use the actual changelog information
    - **Signature**: TypeScript function signature
    - **Examples**: Multiple practical examples covering edge cases
    - **Error Handling**: Common errors and how to handle them
@@ -365,6 +369,8 @@ Before creating a PR, ensure:
 - [ ] Documentation follows existing patterns
 - [ ] Frontmatter tags are correct ("converters" or "utility functions")
 - [ ] Navigation updates automatically show the new function
+- [ ] Version note included showing when function was first introduced
+- [ ] Version information verified from official CHANGELOG.md (not guessed)
 
 #### Playground Styling Checklist
 

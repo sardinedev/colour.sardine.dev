@@ -17,7 +17,7 @@ This is the official documentation site for [`@sardine/colour`](https://github.c
 - **Deployment**: [Netlify](https://netlify.com) - Static hosting with CDN
 - **Language**: TypeScript with strict mode
 
-## � Project Structure
+## 📁 Project Structure
 
 ```
 /

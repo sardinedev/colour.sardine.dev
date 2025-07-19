@@ -1,0 +1,62 @@
+---
+import PlaygroundLayout from "../../layouts/PlaygroundLayout.astro";
+---
+
+<PlaygroundLayout title="getContrastRatioFromHex">
+  <script slot="script" is:inline type="module">
+    import { getContrastRatioFromHex } from "https://unpkg.com/@sardine/colour@2.4.0/dist/index.min.js";
+
+    function convertOnSubmit() {
+      const colour1 = document.getElementById("colour1").value;
+      const colour2 = document.getElementById("colour2").value;
+      const standard = document.getElementById("standard").value;
+
+      try {
+        const ratio = getContrastRatioFromHex(colour1, colour2, standard);
+        document.getElementById("result").innerHTML = ratio;
+
+        // Set background colours to visualize the contrast
+        document.getElementById("result").style.backgroundColor = colour1;
+        document.getElementById("result").style.color = colour2;
+        document.getElementById("result").style.padding = "10px";
+        document.getElementById("result").style.borderRadius = "4px";
+      } catch (error) {
+        document.getElementById("result").innerHTML = error;
+        document.getElementById("result").style.backgroundColor = "transparent";
+        document.getElementById("result").style.color = "inherit";
+        document.getElementById("result").style.padding = "0";
+      }
+    }
+
+    window.convertOnSubmit = convertOnSubmit;
+  </script>
+
+  <div slot="body">
+    <div>
+      <label for="colour1">First colour (hex format)</label>
+      <input type="text" id="colour1" class="input" placeholder="#000000" />
+    </div>
+
+    <div>
+      <label for="colour2">Second colour (hex format)</label>
+      <input type="text" id="colour2" class="input" placeholder="#ffffff" />
+    </div>
+
+    <div>
+      <label for="standard">WCAG Standard</label>
+      <select id="standard" class="input">
+        <option value="WCAG2.1">WCAG 2.1</option>
+        <option value="WCAG3.0">WCAG 3.0</option>
+      </select>
+    </div>
+
+    <button type="button" onclick="convertOnSubmit()">
+      Calculate Contrast Ratio
+    </button>
+
+    <div>
+      <strong>Contrast Ratio:</strong>
+      <label id="result"></label>
+    </div>
+  </div>
+</PlaygroundLayout>

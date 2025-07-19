@@ -257,15 +257,17 @@ git checkout -b docs/functionName
        window.convertOnSubmit = convertOnSubmit;
      </script>
 
-     <label for="input">Type a colour in the [format] format</label>
-     <input type="text" id="input" class="input" placeholder="[example]" />
-     <button
-       type="button"
-       onclick="convertOnSubmit(document.getElementById('input').value)"
-     >
-       Convert
-     </button>
-     <label id="result"></label>
+     <div slot="body">
+       <label for="input">Type a colour in the [format] format</label>
+       <input type="text" id="input" class="input" placeholder="[example]" />
+       <button
+         type="button"
+         onclick="convertOnSubmit(document.getElementById('input').value)"
+       >
+         Convert
+       </button>
+       <label id="result"></label>
+     </div>
    </PlaygroundLayout>
    ```
 
@@ -273,7 +275,7 @@ git checkout -b docs/functionName
 
    - **Consistent styling**: All playgrounds use shared CSS from PlaygroundLayout
    - **Maintainable**: Changes to layout affect all playgrounds automatically
-   - **Clean separation**: JavaScript logic in script slot, HTML in default slot
+   - **Clean separation**: JavaScript logic in script slot, HTML in body slot
    - **Type safety**: Astro provides TypeScript support and validation
 
 4. **Required iframe reference in documentation**:
@@ -376,7 +378,7 @@ Before creating a PR, ensure:
 - [ ] Script slot includes `is:inline` directive for proper browser execution
 - [ ] Import statement uses correct @sardine/colour@2.4.0 version
 - [ ] Function logic placed in script slot with proper error handling
-- [ ] HTML content placed in default slot (no slot name needed)
+- [ ] HTML content placed in body slot with `<div slot="body">` wrapper
 - [ ] NO custom styling (uses shared CSS from PlaygroundLayout)
 - [ ] NO title/description text in HTML body
 - [ ] NO examples section or extra content in HTML

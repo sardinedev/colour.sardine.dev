@@ -165,6 +165,243 @@ npm run build        # Production build
 npm run preview      # Test production build locally
 ```
 
+## Function Documentation Workflow
+
+When documenting new functions from the `@sardine/colour` library, follow this step-by-step process to ensure quality and proper review:
+
+### Step 1: Research the Function
+
+1. **Identify the function** from the GitHub issues tracker (issues #61-#78)
+2. **Research function signature** using the library source code at `github.com/sardinedev/colour`
+3. **Study test files** to understand parameters, return types, and edge cases
+4. **Review existing documentation** for similar functions to maintain consistency
+
+### Step 2: Create Feature Branch
+
+```bash
+# Create a new branch for the specific function
+git checkout -b docs/functionName
+
+# Example: git checkout -b docs/convertHextoCSSRGB
+```
+
+### Step 3: Create Documentation
+
+1. **Create documentation file**: `src/docs/functionName.md`
+2. **Required frontmatter structure**:
+   ```yaml
+   ---
+   title: Descriptive Function Title
+   code: true
+   tags: converters | utility functions
+   ---
+   ```
+3. **Content sections to include**:
+
+   - **Description**: What the function does and supported formats
+   - **Version Note**: When the function was first introduced (e.g., `> **Added in:** @sardine/colour@2.3.0`)
+     - **IMPORTANT**: Always check the official changelog at https://github.com/sardinedev/colour/blob/main/CHANGELOG.md
+     - Search for the function name to find the exact version where it was first added
+     - Do NOT guess the version - use the actual changelog information
+   - **Signature**: TypeScript function signature
+   - **Examples**: Multiple practical examples covering edge cases
+   - **Error Handling**: Common errors and how to handle them
+   - **Interactive Demo**: MUST use exact iframe styling below
+
+4. **Required iframe styling** (must match existing documentation exactly):
+
+   ```html
+   ## Interactive Demo Try the function yourself with our interactive
+   playground:
+
+   <iframe
+     src="/playground/functionName.html"
+     title="functionName"
+     width="100%"
+     height="500px"
+     style="border:0; overflow:hidden;"
+     sandbox="allow-scripts allow-same-origin"
+   ></iframe>
+   ```
+
+   - **Height**: Must be `height="500px"` (NOT 400px or other values)
+   - **Border**: Must be `style="border:0; overflow:hidden;"` (NO custom borders or border-radius)
+   - **Title**: Must include `title="functionName"` attribute
+   - **Sandbox**: Must include `sandbox="allow-scripts allow-same-origin"` for security
+
+### Step 4: Create Interactive Playground
+
+1. **Create playground file**: `public/playground/functionName.html`
+2. **Required HTML structure** (must match existing playgrounds exactly):
+
+   ````html
+   <!DOCTYPE html>
+   <html lang="en">
+     <head>
+       <meta charset="UTF-8" />
+       <title>Function Name</title>
+       <style>
+         /* Use EXACT CSS from existing playgrounds */
+         body {
+           color: #fff;
+           margin: 0;
+           font-family: Courier New;
+         }
+         /* Include all standard button, input, label, and #result styles */
+       </style>
+       <script type="module">
+         3. **Library import**: Use unpkg CDN with specific version
+   ```javascript
+   import { functionName } from "https://unpkg.com/@sardine/colour@2.4.0/dist/index.min.js";
+   ````
+
+   **Note**: Some functions may be missing from older published packages (e.g., `convertHextoCSSRGB` in v2.1.1-rc.1.0).
+   Always use the latest stable version (currently 2.4.0) to ensure all functions are available.
+   function convertOnSubmit(input) {
+   try {
+   const res = functionName(input);
+   document.getElementById("result").innerHTML = res; // or JSON.stringify(res)
+   // Optional: Set background color if function returns hex/css colors
+   document.getElementById("result").style.backgroundColor = input;
+   } catch (error) {
+   document.getElementById("result").innerHTML = error; // NOT error.message
+   }
+   }
+   window.convertOnSubmit = convertOnSubmit;
+   </script>
+     </head>
+     <body>
+       <label for="input">Type a colour in the [format] format</label>
+       <input type="text" id="input" class="input" placeholder="[example]" />
+       <button
+         type="button"
+         onclick="convertOnSubmit(document.getElementById('input').value)"
+       >
+         Convert
+       </button>
+       <label id="result"></label>
+     </body>
+   </html>
+   ```
+
+3. **Critical styling requirements**:
+
+   - **NO custom backgrounds, gradients, or elaborate styling**
+   - **NO title/description text in HTML body**
+   - **NO examples section or extra content**
+   - **NO border-radius, custom borders, or special result styling**
+   - **NO auto-conversion or event listeners** - manual button click only
+   - **NO initial values** - just placeholder in input
+   - **Result element MUST be `<label id="result"></label>`** - NOT div
+   - **Error handling displays `error` NOT `error.message`**
+   - **Match existing playground CSS exactly** - copy from convertHextoRGB.html
+
+4. **Content requirements**:
+   - **Minimal interface**: label → input → button → result only
+   - **Manual conversion**: User must click Convert button
+   - **Simple output**: Display function result directly or as JSON.stringify()
+   - **Visual feedback**: Set backgroundColor when appropriate for color functions
+
+### Step 5: Test Documentation
+
+1. **Start dev server**: `npm run dev`
+2. **Verify navigation**: Check function appears in navigation menu
+3. **Test playground**: Ensure interactive demo works correctly
+4. **Validate examples**: Confirm all code examples work as expected
+5. **Check responsive design**: Test on different screen sizes
+
+### Step 6: Commit and Push
+
+```bash
+# Stage the files
+git add src/docs/functionName.md public/playground/functionName.html
+
+# Commit with descriptive message that references the issue
+git commit -m "docs: add functionName documentation and playground
+
+- Add comprehensive documentation for functionName function
+- Include function signature, parameters, return type, and examples
+- Add interactive playground demo with real-time conversion
+- Support for [list key features]
+- Proper error handling documentation
+
+Closes #XX"
+
+# Push the branch
+git push -u origin docs/functionName
+```
+
+### Step 7: Create Pull Request
+
+1. **Create PR** linking to the documentation issue
+2. **Use descriptive title**: `docs: add functionName documentation and playground`
+3. **Include comprehensive description**:
+   - What's included (documentation + playground)
+   - Key features implemented
+   - Testing checklist
+   - Progress update
+4. **Link to issue**: Include "Closes #XX" in PR description
+5. **Request review**: Assign reviewers for quality control
+
+### Step 8: Address Review Feedback
+
+1. **Make requested changes** on the feature branch
+2. **Push updates** to automatically update the PR
+3. **Respond to comments** with explanations or confirmations
+
+### Step 9: Merge and Cleanup
+
+1. **Merge PR** when approved (this will automatically close the linked issue)
+2. **Delete feature branch** after merge
+3. **Update main branch** locally
+4. **Update progress tracking** in issue #2 if needed
+
+### Quality Checklist
+
+Before creating a PR, ensure:
+
+- [ ] Function signature is accurate and uses TypeScript types
+- [ ] All supported formats/parameters are documented with examples
+- [ ] Error handling section includes real error messages
+- [ ] British spelling ("colour") is used consistently
+- [ ] Examples use correct import syntax
+- [ ] Playground demo works without errors
+- [ ] Documentation follows existing patterns
+- [ ] Frontmatter tags are correct ("converters" or "utility functions")
+- [ ] Navigation updates automatically show the new function
+- [ ] Version note included showing when function was first introduced
+- [ ] Version information verified from official CHANGELOG.md (not guessed)
+
+#### Playground Styling Checklist
+
+- [ ] Uses exact CSS from existing playgrounds (copy from convertHextoRGB.html)
+- [ ] NO custom backgrounds, gradients, or elaborate styling
+- [ ] NO title/description text in HTML body
+- [ ] NO examples section or extra content in HTML
+- [ ] NO border-radius, custom borders, or special result styling
+- [ ] Result element is `<label id="result"></label>` NOT `<div id="result"></div>`
+- [ ] Error handling displays `error` NOT `error.message`
+- [ ] Manual button click conversion only (NO auto-conversion)
+- [ ] No initial values in input (just placeholder)
+
+#### Documentation iframe Checklist
+
+- [ ] Height is exactly `height="500px"` (NOT 400px)
+- [ ] Style is exactly `style="border:0; overflow:hidden;"` (NO custom borders)
+- [ ] Includes `title="functionName"` attribute
+- [ ] Includes `sandbox="allow-scripts allow-same-origin"` attribute
+- [ ] Uses consistent "Interactive Demo" heading
+- [ ] Uses consistent descriptive text above iframe
+
+### Documentation Standards
+
+- **Tone**: Clear, professional, helpful
+- **Code Examples**: Always include imports and realistic use cases
+- **Error Examples**: Show actual error messages from the library
+- **Playground Integration**: Seamless iframe embedding with consistent styling
+- **Consistency**: Follow exact patterns from existing documentation files
+- **Styling**: Minimal playground design that integrates into documentation iframe
+
 ## Important Considerations
 
 ### Performance Optimizations

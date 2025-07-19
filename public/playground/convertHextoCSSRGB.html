@@ -57,17 +57,14 @@
       import {
         convertHextoCSSRGB,
         isHexDarkColour,
-      } from "https://unpkg.com/@sardine/colour@2.1.1-rc.1.0/dist/index.min.js";
+      } from "https://unpkg.com/@sardine/colour@2.4.0/dist/index.min.js";
 
       function convertOnSubmit(input) {
         try {
           const res = convertHextoCSSRGB(input);
           document.getElementById("result").innerHTML = res;
           document.getElementById("result").style.backgroundColor = input;
-          document.getElementById("result").style.color = isHexDarkColour(
-            input,
-            "WCAG2.1"
-          )
+          document.getElementById("result").style.color = isHexDarkColour(input)
             ? "#fff"
             : "#000";
         } catch (error) {

@@ -230,7 +230,7 @@ git checkout -b docs/functionName
 1. **Create playground file**: `public/playground/functionName.html`
 2. **Required HTML structure** (must match existing playgrounds exactly):
 
-   ```html
+   ````html
    <!DOCTYPE html>
    <html lang="en">
      <head>
@@ -246,19 +246,25 @@ git checkout -b docs/functionName
          /* Include all standard button, input, label, and #result styles */
        </style>
        <script type="module">
-         import { functionName } from "https://unpkg.com/@sardine/colour@2.1.1-rc.1.0/dist/index.min.js";
-         function convertOnSubmit(input) {
-           try {
-             const res = functionName(input);
-             document.getElementById("result").innerHTML = res; // or JSON.stringify(res)
-             // Optional: Set background color if function returns hex/css colors
-             document.getElementById("result").style.backgroundColor = input;
-           } catch (error) {
-             document.getElementById("result").innerHTML = error; // NOT error.message
-           }
-         }
-         window.convertOnSubmit = convertOnSubmit;
-       </script>
+         3. **Library import**: Use unpkg CDN with specific version
+   ```javascript
+   import { functionName } from "https://unpkg.com/@sardine/colour@2.4.0/dist/index.min.js";
+   ````
+
+   **Note**: Some functions may be missing from older published packages (e.g., `convertHextoCSSRGB` in v2.1.1-rc.1.0).
+   Always use the latest stable version (currently 2.4.0) to ensure all functions are available.
+   function convertOnSubmit(input) {
+   try {
+   const res = functionName(input);
+   document.getElementById("result").innerHTML = res; // or JSON.stringify(res)
+   // Optional: Set background color if function returns hex/css colors
+   document.getElementById("result").style.backgroundColor = input;
+   } catch (error) {
+   document.getElementById("result").innerHTML = error; // NOT error.message
+   }
+   }
+   window.convertOnSubmit = convertOnSubmit;
+   </script>
      </head>
      <body>
        <label for="input">Type a colour in the [format] format</label>

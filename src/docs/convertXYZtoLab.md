@@ -4,6 +4,8 @@ code: true
 tags: converters
 ---
 
+> **Available since:** @sardine/colour@1.2.0
+
 ## Description
 
 This function converts colours in the CIELAB colourspace into a Lab object.

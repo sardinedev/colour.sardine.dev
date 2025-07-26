@@ -5,11 +5,11 @@ code: true
 tags: utility functions
 ---
 
-# getContrastRatio
+> **Available since:** @sardine/colour@2.2.0
+
+## Description
 
 The `getContrastRatio` function calculates the contrast ratio between two colours according to the Web Content Accessibility Guidelines (WCAG). It supports multiple colour formats including hex, CSS RGB, and named CSS colours, making it versatile for accessibility testing and compliance.
-
-> **Added in:** @sardine/colour@2.2.0
 
 ## Signature
 

@@ -4,6 +4,8 @@ code: true
 tags: converters
 ---
 
+> **Available since:** @sardine/colour@2.1.0
+
 ## Description
 
 This function converts RGB colours into CSS RGB.

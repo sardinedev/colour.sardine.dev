@@ -4,6 +4,8 @@ code: true
 tags: utility functions
 ---
 
+> **Available since:** @sardine/colour@1.2.0
+
 ## Description
 
 The `RGBdistance` function calculates the distance between two RGB colours using the [CIEDE2000 color-difference formula](https://en.wikipedia.org/wiki/Color_difference#CIEDE2000).

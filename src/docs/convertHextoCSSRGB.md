@@ -4,6 +4,8 @@ code: true
 tags: converters
 ---
 
+> **Available since:** @sardine/colour@2.3.0
+
 ## Description
 
 This function converts hexadecimal colours into a CSS RGB/RGBA string.

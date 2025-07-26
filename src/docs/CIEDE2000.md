@@ -4,6 +4,8 @@ code: true
 tags: utility functions
 ---
 
+> **Available since:** @sardine/colour@1.2.0
+
 ## Description
 
 The `ciede2000` function mesures the colour difference between two colours in the Lab colour space. It uses the [CIEDE2000 color-difference formula](https://en.wikipedia.org/wiki/Color_difference#CIEDE2000).

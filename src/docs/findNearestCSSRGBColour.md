@@ -1,7 +1,7 @@
 ---
 title: Find nearest CSS RGB Colour
 code: true
-tags: utility functions
+tags: Nearest Colour Finders
 ---
 
 > **Available since:** @sardine/colour@2.1.0

@@ -1,7 +1,7 @@
 ---
 title: Convert XYZ to Lab
 code: true
-tags: converters
+tags: Converters
 ---
 
 > **Available since:** @sardine/colour@1.2.0

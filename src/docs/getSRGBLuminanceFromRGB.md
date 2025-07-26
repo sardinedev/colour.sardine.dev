@@ -1,7 +1,7 @@
 ---
 title: Get sRGB Luminance From RGB
 code: true
-tags: utility functions
+tags: Luminance & Brightness
 description: Calculates the sRGB luminance value from an RGB colour.
 ---
 
@@ -14,13 +14,15 @@ Calculates the sRGB luminance value for a given RGB colour object.
 ## Signature
 
 ```typescript
-function getSRGBLuminanceFromRGB(rgb: RGB): number
+function getSRGBLuminanceFromRGB(rgb: RGB): number;
 ```
 
 ## Parameters
+
 - `rgb`: `RGB` — The RGB colour object (e.g., `{ r: 34, g: 36, b: 41 }`).
 
 ## Returns
+
 - `number` — The sRGB luminance value (0 to 1).
 
 ## Examples
@@ -37,6 +39,7 @@ getSRGBLuminanceFromRGB({ r: 34, g: 36, b: 41 });
 - Throws an error if the input is not a valid RGB object.
 
 ## Interactive Demo
+
 Try the function yourself with our interactive playground:
 
 <iframe

@@ -1,7 +1,7 @@
 ---
 title: Is CSS RGB Dark Colour
 code: true
-tags: utility functions
+tags: Dark Colour Detection
 description: Determines if a CSS RGB colour string is considered dark.
 ---
 
@@ -14,13 +14,15 @@ Checks if a CSS RGB colour string represents a dark colour based on luminance.
 ## Signature
 
 ```typescript
-function isCSSRGBDarkColour(cssRGB: string): boolean
+function isCSSRGBDarkColour(cssRGB: string): boolean;
 ```
 
 ## Parameters
+
 - `cssRGB`: `string` — The CSS RGB colour string (e.g., `"rgb(34, 36, 41)"`).
 
 ## Returns
+
 - `boolean` — `true` if the colour is dark, otherwise `false`.
 
 ## Examples
@@ -40,6 +42,7 @@ isCSSRGBDarkColour("rgb(255, 224, 0)");
 - Throws an error if the input is not a valid CSS RGB colour string.
 
 ## Interactive Demo
+
 Try the function yourself with our interactive playground:
 
 <iframe

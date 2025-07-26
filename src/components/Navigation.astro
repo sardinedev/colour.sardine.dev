@@ -133,37 +133,25 @@ const gettingStarted = [
         }
       </ul>
 
-      <h3 class="mt-4 text-xl capitalize">converters</h3>
-      <ul class="flex flex-col ml-3">
-        {
-          (groupedPosts["converters"] || []).map((item) => (
-            <li
-              class="flex"
-              class:list={[currentPath === item.href && "aria-current"]}
-            >
-              <a class="py-2 w-full" href={item.href}>
-                {item.title}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-
-      <h3 class="mt-4 text-xl capitalize">utility functions</h3>
-      <ul class="flex flex-col ml-3">
-        {
-          (groupedPosts["utility functions"] || []).map((item) => (
-            <li
-              class="flex"
-              class:list={[currentPath === item.href && "aria-current"]}
-            >
-              <a class="py-2 w-full" href={item.href}>
-                {item.title}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
+      {
+        Object.keys(groupedPosts).map((category) => (
+          <>
+            <h3 class="mt-4 text-xl">{category}</h3>
+            <ul class="flex flex-col ml-3">
+              {groupedPosts[category].map((item) => (
+                <li
+                  class="flex"
+                  class:list={[currentPath === item.href && "aria-current"]}
+                >
+                  <a class="py-2 w-full" href={item.href}>
+                    {item.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </>
+        ))
+      }
     </nav>
   </header>
 </aside>

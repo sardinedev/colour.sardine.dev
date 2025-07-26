@@ -1,7 +1,7 @@
 ---
 title: Get contrast ratio from hexadecimal
 code: true
-tags: converters
+tags: Contrast & Accessibility
 ---
 
 > **Available since:** @sardine/colour@2.2.0

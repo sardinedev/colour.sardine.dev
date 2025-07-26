@@ -1,7 +1,7 @@
 ---
 title: Convert Hexadecimal to named CSS colour
 code: true
-tags: converters
+tags: Converters
 ---
 
 > **Available since:** @sardine/colour@2.1.0

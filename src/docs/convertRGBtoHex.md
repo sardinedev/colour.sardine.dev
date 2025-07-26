@@ -1,7 +1,7 @@
 ---
 title: Convert RGB to Hexadecimal
 code: true
-tags: converters
+tags: Converters
 ---
 
 > **Available since:** @sardine/colour@1.6.0

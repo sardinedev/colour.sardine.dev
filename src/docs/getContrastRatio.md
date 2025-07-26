@@ -2,7 +2,7 @@
 title: Get contrast ratio
 description: Calculate the contrast ratio between two colours according to WCAG standards.
 code: true
-tags: utility functions
+tags: Contrast & Accessibility
 ---
 
 > **Available since:** @sardine/colour@2.2.0

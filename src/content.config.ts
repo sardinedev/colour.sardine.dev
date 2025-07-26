@@ -5,7 +5,15 @@ const docs = defineCollection({
 	loader: glob({ pattern: "**/*.md", base: "./src/docs" }),
 	schema: z.object({
 		description: z.string().optional(),
-		tags: z.enum(["converters", "utility functions"]),
+		tags: z.enum([
+			"Colour Validation",
+			"Contrast & Accessibility",
+			"Converters",
+			"Dark Colour Detection",
+			"Luminance & Brightness",
+			"Nearest Colour Finders",
+			"Distance & Comparison",
+		]),
 		title: z.string(),
 	}),
 });

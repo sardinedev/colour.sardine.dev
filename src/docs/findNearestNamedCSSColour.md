@@ -1,7 +1,7 @@
 ---
 title: Find Nearest Named CSS Colour
 code: true
-tags: utility functions
+tags: Nearest Colour Finders
 description: Finds the nearest named CSS colour in a palette to a given named CSS colour.
 ---
 

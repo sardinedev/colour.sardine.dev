@@ -1,0 +1,34 @@
+---
+import PlaygroundLayout from "../../layouts/PlaygroundLayout.astro";
+---
+
+<PlaygroundLayout title="Get Contrast Ratio From CSSRGB">
+  <script slot="script" is:inline type="module">
+    import { getContrastRatioFromCSSRGB } from "https://unpkg.com/@sardine/colour@2.4.0/dist/index.min.js";
+
+    function convertOnSubmit() {
+      const colour1 = document.getElementById("inputColour1").value;
+      const colour2 = document.getElementById("inputColour2").value;
+      const standard = document.getElementById("inputStandard").value;
+      try {
+        const res = getContrastRatioFromCSSRGB(colour1, colour2, standard);
+        document.getElementById("result").innerHTML = res;
+      } catch (error) {
+        document.getElementById("result").innerHTML = error;
+      }
+    }
+
+    window.convertOnSubmit = convertOnSubmit;
+  </script>
+
+  <div slot="body">
+    <label for="inputColour1">First colour (CSSRGB format)</label>
+    <input type="text" id="inputColour1" class="input" placeholder="rgb(255,0,0)" />
+    <label for="inputColour2">Second colour (CSSRGB format)</label>
+    <input type="text" id="inputColour2" class="input" placeholder="rgb(0,255,0)" />
+    <label for="inputStandard">WCAG Standard</label>
+    <input type="text" id="inputStandard" class="input" placeholder="WCAG2.1" />
+    <button type="button" onclick="convertOnSubmit()">Convert</button>
+    <label id="result"></label>
+  </div>
+</PlaygroundLayout>

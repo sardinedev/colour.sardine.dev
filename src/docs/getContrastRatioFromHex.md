@@ -4,11 +4,11 @@ code: true
 tags: converters
 ---
 
-# getContrastRatioFromHex
+> **Available since:** @sardine/colour@2.2.0
+
+## Description
 
 Calculates the contrast ratio between two colours in hexadecimal format using WCAG 2.1 or WCAG 3.0 standards.
-
-> **Added in:** @sardine/colour@2.2.0
 
 The contrast ratio is a value that measures the perceptual difference in brightness between two colours. It's crucial for accessibility as it determines the readability of text on backgrounds. A higher contrast ratio indicates greater visual distinction between colours.
 

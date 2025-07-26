@@ -4,6 +4,8 @@ code: true
 tags: converters
 ---
 
+> **Available since:** @sardine/colour@1.6.0
+
 ## Description
 
 Converts CSS RGB colour format into Hexadecimal.

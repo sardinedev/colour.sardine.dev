@@ -4,6 +4,8 @@ code: true
 tags: converters
 ---
 
+> **Available since:** @sardine/colour@1.6.0
+
 ## Description
 
 Converts a named CSS Colour in an hexadecimal one.

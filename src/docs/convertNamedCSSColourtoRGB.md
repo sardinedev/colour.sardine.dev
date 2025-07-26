@@ -4,6 +4,8 @@ code: true
 tags: converters
 ---
 
+> **Available since:** @sardine/colour@2.1.0
+
 ## Description
 
 Converts a named CSS Colour into a RGB object.

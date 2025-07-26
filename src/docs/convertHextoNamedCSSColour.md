@@ -4,6 +4,8 @@ code: true
 tags: converters
 ---
 
+> **Available since:** @sardine/colour@2.1.0
+
 ## Description
 
 The `convertHextoNamedCSSColour` function is designed to convert a hexadecimal color value into its corresponding named CSS color. It utilizes a predefined list of named CSS colors, mapping each color to its hexadecimal representation.

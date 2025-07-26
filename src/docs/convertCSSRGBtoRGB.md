@@ -4,14 +4,16 @@ code: true
 tags: converters
 ---
 
+> **Available since:** @sardine/colour@2.1.0
+
 ## Description
 
-Converts CSS RGB colour format into Hexadecimal.
+Converts CSS RGB colour format into RGB object.
 
 It accepts multiple formats of CSS RGB colours:
 
-- Coma separated values, ie `rgb(0,0,0)`
-- Coma separated values with alpha channel, ie `rgba(0,0,0,0.4)`
+- Comma separated values, ie `rgb(0,0,0)`
+- Comma separated values with alpha channel, ie `rgba(0,0,0,0.4)`
 - CSS Colors 4 space-separated values, ie `rgb(0 0 0)`
 - CSS Colors 4 space-separated values with alpha channel, ie `rgba(0 0 0 / 0.4)`
 

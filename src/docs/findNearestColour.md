@@ -4,6 +4,8 @@ code: true
 tags: utility functions
 ---
 
+> **Available since:** @sardine/colour@2.1.0
+
 ## Description
 
 The `findNearestColour` function is useful when you have a colour that needs to matched with the closest one from a palette of colours.

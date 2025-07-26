@@ -4,6 +4,8 @@ code: true
 tags: utility functions
 ---
 
+> **Available since:** @sardine/colour@2.1.0
+
 ## Description
 
 The `findNearestCSSRGBColour` function is useful when you have a CSS RGB colour that needs to matched with the closest one from a palette of colours.

@@ -1,0 +1,33 @@
+---
+import PlaygroundLayout from "../../layouts/PlaygroundLayout.astro";
+---
+
+<PlaygroundLayout title="convertXYZtoRGB">
+  <script slot="script" is:inline type="module">
+    import { convertXYZtoRGB } from "https://unpkg.com/@sardine/colour@2.4.0/dist/index.min.js";
+
+    function convertOnSubmit(input) {
+      try {
+        const numbers = input.split(',').map((n) => parseFloat(n.trim()));
+        if (numbers.length !== 3 || numbers.some((n) => isNaN(n))) {
+          throw new Error('Please provide three numbers separated by commas');
+        }
+        const colour = { X: numbers[0], Y: numbers[1], Z: numbers[2] };
+        const res = convertXYZtoRGB(colour);
+        document.getElementById('result').innerHTML = JSON.stringify(res);
+        document.getElementById('result').style.backgroundColor = `rgb(${res.R}, ${res.G}, ${res.B})`;
+      } catch (error) {
+        document.getElementById('result').innerHTML = error;
+      }
+    }
+
+    window.convertOnSubmit = convertOnSubmit;
+  </script>
+
+  <div slot="body">
+    <label for="input">Type XYZ values separated by commas</label>
+    <input type="text" id="input" class="input" placeholder="20.5, 21.5, 23.5" />
+    <button type="button" onclick="convertOnSubmit(document.getElementById('input').value)">Convert</button>
+    <label id="result"></label>
+  </div>
+</PlaygroundLayout>

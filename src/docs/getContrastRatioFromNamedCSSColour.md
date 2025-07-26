@@ -1,7 +1,7 @@
 ---
 title: Get Contrast Ratio From Named CSS Colour
 code: true
-tags: utility functions
+tags: Contrast & Accessibility
 description: Calculates the contrast ratio between two named CSS colours using the specified WCAG standard.
 ---
 
@@ -14,15 +14,21 @@ Calculates the contrast ratio between two named CSS colours according to the spe
 ## Signature
 
 ```typescript
-function getContrastRatioFromNamedCSSColour(colour1: string, colour2: string, standard?: WCAG): number
+function getContrastRatioFromNamedCSSColour(
+  colour1: string,
+  colour2: string,
+  standard?: WCAG
+): number;
 ```
 
 ## Parameters
+
 - `colour1`: `string` — The first named CSS colour (e.g., `"navy"`).
 - `colour2`: `string` — The second named CSS colour (e.g., `"yellow"`).
 - `standard`: `WCAG` (optional) — The WCAG standard to use (e.g., `"WCAG2.1"`).
 
 ## Returns
+
 - `number` — The contrast ratio value.
 
 ## Examples
@@ -39,6 +45,7 @@ getContrastRatioFromNamedCSSColour("navy", "yellow", "WCAG2.1");
 - Throws an error if either input is not a valid named CSS colour.
 
 ## Interactive Demo
+
 Try the function yourself with our interactive playground:
 
 <iframe

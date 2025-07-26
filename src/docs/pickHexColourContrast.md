@@ -1,7 +1,7 @@
 ---
 title: Pick Hexadecimal Colour Contrast
 code: true
-tags: utility functions
+tags: Contrast & Accessibility
 description: Picks the hexadecimal colour with the highest contrast against a background colour from two options.
 ---
 
@@ -15,22 +15,28 @@ Picks the hexadecimal colour with the highest contrast against a background colo
 
 ```typescript
 function pickHexColourContrast(
-  { backgroundColour, optionOneColour, optionTwoColour }: {
+  {
+    backgroundColour,
+    optionOneColour,
+    optionTwoColour,
+  }: {
     backgroundColour: string;
     optionOneColour: string;
     optionTwoColour: string;
   },
   standard: WCAG
-): string
+): string;
 ```
 
 ## Parameters
+
 - `backgroundColour`: `string` — The background hexadecimal colour (e.g., `"#ffffff"`).
 - `optionOneColour`: `string` — The first option hexadecimal colour (e.g., `"#000000"`).
 - `optionTwoColour`: `string` — The second option hexadecimal colour (e.g., `"#ff0000"`).
 - `standard`: `WCAG` — The WCAG standard to evaluate the contrast ratio against (e.g., `"WCAG2.1"`).
 
 ## Returns
+
 - `string` — The hexadecimal colour (either option one or two) with the highest contrast against the background colour.
 
 ## Examples
@@ -38,18 +44,24 @@ function pickHexColourContrast(
 ```typescript
 import { pickHexColourContrast } from "@sardine/colour";
 
-pickHexColourContrast({
-  backgroundColour: "#ffffff",
-  optionOneColour: "#000000",
-  optionTwoColour: "#ff0000"
-}, "WCAG2.1");
+pickHexColourContrast(
+  {
+    backgroundColour: "#ffffff",
+    optionOneColour: "#000000",
+    optionTwoColour: "#ff0000",
+  },
+  "WCAG2.1"
+);
 // => "#000000"
 
-pickHexColourContrast({
-  backgroundColour: "#222429",
-  optionOneColour: "#ffe000",
-  optionTwoColour: "#41c7c7"
-}, "WCAG2.1");
+pickHexColourContrast(
+  {
+    backgroundColour: "#222429",
+    optionOneColour: "#ffe000",
+    optionTwoColour: "#41c7c7",
+  },
+  "WCAG2.1"
+);
 // => "#ffe000"
 ```
 
@@ -59,6 +71,7 @@ pickHexColourContrast({
 - If the standard is not a valid WCAG value, the function may throw an error from downstream functions.
 
 ## Interactive Demo
+
 Try the function yourself with our interactive playground:
 
 <iframe

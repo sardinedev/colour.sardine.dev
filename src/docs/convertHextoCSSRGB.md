@@ -1,7 +1,7 @@
 ---
 title: Convert Hexadecimal to CSS RGB
 code: true
-tags: converters
+tags: Converters
 ---
 
 > **Available since:** @sardine/colour@2.3.0

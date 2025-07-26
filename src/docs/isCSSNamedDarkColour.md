@@ -1,7 +1,7 @@
 ---
 title: Is Named CSS Colour Dark
 code: true
-tags: utility functions
+tags: Dark Colour Detection
 description: Determines if a named CSS colour is considered dark.
 ---
 
@@ -14,13 +14,15 @@ Checks if a named CSS colour string represents a dark colour based on luminance.
 ## Signature
 
 ```typescript
-function isCSSNamedDarkColour(name: string): boolean
+function isCSSNamedDarkColour(name: string): boolean;
 ```
 
 ## Parameters
+
 - `name`: `string` — The named CSS colour (e.g., `"navy"`).
 
 ## Returns
+
 - `boolean` — `true` if the colour is dark, otherwise `false`.
 
 ## Examples
@@ -40,6 +42,7 @@ isCSSNamedDarkColour("yellow");
 - Throws an error if the input is not a valid named CSS colour.
 
 ## Interactive Demo
+
 Try the function yourself with our interactive playground:
 
 <iframe

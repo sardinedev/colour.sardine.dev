@@ -1,7 +1,7 @@
 ---
 title: Convert a named CSS colour to RGB object
 code: true
-tags: converters
+tags: Converters
 ---
 
 > **Available since:** @sardine/colour@2.1.0

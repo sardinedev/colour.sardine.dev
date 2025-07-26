@@ -1,7 +1,7 @@
 ---
 title: Find Nearest RGB Colour
 code: true
-tags: utility functions
+tags: Nearest Colour Finders
 description: Finds the nearest RGB colour in a palette to a given RGB colour.
 ---
 

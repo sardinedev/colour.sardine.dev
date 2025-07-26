@@ -1,7 +1,7 @@
 ---
 title: Find Nearest Hexadecimal Colour
 code: true
-tags: utility functions
+tags: Nearest Colour Finders
 description: Finds the nearest hexadecimal colour in a palette to a given hexadecimal colour.
 ---
 
@@ -14,14 +14,16 @@ Finds the nearest hexadecimal colour in a palette to the given hexadecimal colou
 ## Signature
 
 ```typescript
-function findNearestHexColour(colour: string, palette: string[]): string
+function findNearestHexColour(colour: string, palette: string[]): string;
 ```
 
 ## Parameters
+
 - `colour`: `string` — The hexadecimal colour to find the nearest match for (e.g., `"#ff0000"`).
 - `palette`: `string[]` — An array of hexadecimal colours to search for the nearest match in.
 
 ## Returns
+
 - `string` — The hexadecimal colour in the palette that is closest to the given colour. If the palette has fewer than 2 colours, or is undefined/null, the original colour is returned.
 
 ## Examples
@@ -45,6 +47,7 @@ findNearestHexColour("#abcdef", undefined);
 - If `colour` is not a valid hexadecimal string, downstream conversion functions may throw errors (e.g., `convertHextoRGB`).
 
 ## Interactive Demo
+
 Try the function yourself with our interactive playground:
 
 <iframe

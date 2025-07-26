@@ -1,7 +1,7 @@
 ---
 title: Is Named CSS Colour
 code: true
-tags: utility functions
+tags: Colour Validation
 description: Determines whether a string represents a valid named CSS colour.
 ---
 
@@ -14,13 +14,15 @@ Determines whether a string represents a valid named CSS colour.
 ## Signature
 
 ```typescript
-function isNamedCSSColour(colour: string): boolean
+function isNamedCSSColour(colour: string): boolean;
 ```
 
 ## Parameters
+
 - `colour`: `string` — The string to test (e.g., `"red"`, `"navy"`).
 
 ## Returns
+
 - `boolean` — `true` if the string represents a valid named CSS colour, `false` otherwise.
 
 ## Examples
@@ -43,6 +45,7 @@ isNamedCSSColour("notacolour");
 - Returns `false` for any string that is not a valid named CSS colour.
 
 ## Interactive Demo
+
 Try the function yourself with our interactive playground:
 
 <iframe

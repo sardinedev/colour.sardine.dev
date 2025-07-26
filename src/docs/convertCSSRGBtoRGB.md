@@ -1,7 +1,7 @@
 ---
 title: Convert CSS RGB to RGB
 code: true
-tags: converters
+tags: Converters
 ---
 
 > **Available since:** @sardine/colour@2.1.0

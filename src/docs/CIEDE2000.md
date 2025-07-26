@@ -1,7 +1,7 @@
 ---
 title: Color difference - CIEDE2000
 code: true
-tags: utility functions
+tags: Distance & Comparison
 ---
 
 > **Available since:** @sardine/colour@1.2.0

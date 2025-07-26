@@ -1,0 +1,26 @@
+---
+import PlaygroundLayout from "../../layouts/PlaygroundLayout.astro";
+---
+
+<PlaygroundLayout title="Is CSS Named Dark Colour">
+  <script slot="script" is:inline type="module">
+    import { isCSSNamedDarkColour } from "https://unpkg.com/@sardine/colour@2.4.0/dist/index.min.js";
+    function convertOnSubmit() {
+      const name = document.getElementById("input").value;
+      try {
+        const res = isCSSNamedDarkColour(name);
+        document.getElementById("result").innerHTML = res;
+        document.getElementById("result").style.backgroundColor = name;
+      } catch (error) {
+        document.getElementById("result").innerHTML = error;
+      }
+    }
+    window.convertOnSubmit = convertOnSubmit;
+  </script>
+  <div slot="body">
+    <label for="input">Type a named CSS colour</label>
+    <input type="text" id="input" class="input" placeholder="navy" />
+    <button type="button" onclick="convertOnSubmit()">Convert</button>
+    <label id="result"></label>
+  </div>
+</PlaygroundLayout>

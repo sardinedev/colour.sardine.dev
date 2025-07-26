@@ -1,5 +1,12 @@
 # GitHub Copilot Instructions for colour.sardine.dev
 
+### Additional Documentation Details (AI Agent Notes)
+
+- Always use the full word "hexadecimal" instead of "hex" in documentation titles, descriptions, and content.
+- The "> **Added in:**" version note must appear immediately after the frontmatter block.
+- Use a "## Description" section (not a function name heading) to introduce the function, matching the style of other documentation files.
+- Playground files must be created in `src/pages/playground` using the PlaygroundLayout template and Astro named slots.
+
 This document provides essential guidance for AI coding agents working on this documentation website for the `@sardine/colour` JavaScript utility library.
 
 ## Project Overview

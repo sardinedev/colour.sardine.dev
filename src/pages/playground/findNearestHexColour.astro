@@ -1,0 +1,41 @@
+---
+import PlaygroundLayout from "../../layouts/PlaygroundLayout.astro";
+---
+
+<PlaygroundLayout title="Find Nearest Hexadecimal Colour">
+  <script slot="script" is:inline type="module">
+    import { findNearestHexColour } from "https://unpkg.com/@sardine/colour@2.4.0/dist/index.min.js";
+
+    function convertOnSubmit() {
+      const input = document.getElementById("inputColour").value;
+      const palette = document
+        .getElementById("inputPalette")
+        .value.split(",")
+        .map((s) => s.trim())
+        .filter(Boolean);
+      try {
+        const res = findNearestHexColour(input, palette);
+        document.getElementById("result").innerHTML = res;
+        document.getElementById("result").style.backgroundColor = res;
+      } catch (error) {
+        document.getElementById("result").innerHTML = error;
+      }
+    }
+
+    window.convertOnSubmit = convertOnSubmit;
+  </script>
+
+  <div slot="body">
+    <label for="inputColour">Type a colour in the hexadecimal format</label>
+    <input type="text" id="inputColour" class="input" placeholder="#ff0000" />
+    <label for="inputPalette">Palette (comma-separated hexadecimal)</label>
+    <input
+      type="text"
+      id="inputPalette"
+      class="input"
+      placeholder="#00ff00,#0000ff,#f80000"
+    />
+    <button type="button" onclick="convertOnSubmit()">Convert</button>
+    <label id="result"></label>
+  </div>
+</PlaygroundLayout>

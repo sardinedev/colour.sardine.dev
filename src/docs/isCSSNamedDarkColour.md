@@ -1,5 +1,5 @@
 ---
-title: Is CSS Named Dark Colour
+title: Is Named CSS Colour Dark
 code: true
 tags: utility functions
 description: Determines if a named CSS colour is considered dark.

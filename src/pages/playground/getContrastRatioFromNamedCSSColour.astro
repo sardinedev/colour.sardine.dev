@@ -1,0 +1,31 @@
+---
+import PlaygroundLayout from "../../layouts/PlaygroundLayout.astro";
+---
+
+<PlaygroundLayout title="Get Contrast Ratio From Named CSS Colour">
+  <script slot="script" is:inline type="module">
+    import { getContrastRatioFromNamedCSSColour } from "https://unpkg.com/@sardine/colour@2.4.0/dist/index.min.js";
+    function convertOnSubmit() {
+      const colour1 = document.getElementById("inputColour1").value;
+      const colour2 = document.getElementById("inputColour2").value;
+      const standard = document.getElementById("inputStandard").value;
+      try {
+        const res = getContrastRatioFromNamedCSSColour(colour1, colour2, standard);
+        document.getElementById("result").innerHTML = res;
+      } catch (error) {
+        document.getElementById("result").innerHTML = error;
+      }
+    }
+    window.convertOnSubmit = convertOnSubmit;
+  </script>
+  <div slot="body">
+    <label for="inputColour1">First named CSS colour</label>
+    <input type="text" id="inputColour1" class="input" placeholder="navy" />
+    <label for="inputColour2">Second named CSS colour</label>
+    <input type="text" id="inputColour2" class="input" placeholder="yellow" />
+    <label for="inputStandard">WCAG standard</label>
+    <input type="text" id="inputStandard" class="input" placeholder="WCAG2.1" />
+    <button type="button" onclick="convertOnSubmit()">Convert</button>
+    <label id="result"></label>
+  </div>
+</PlaygroundLayout>

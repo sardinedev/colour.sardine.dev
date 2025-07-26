@@ -6,6 +6,9 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
+  build: {
+    inlineStylesheets: "always",
+  },
   integrations: [mdx()],
   markdown: {
     syntaxHighlight: "shiki",
@@ -15,5 +18,8 @@ export default defineConfig({
   },
   vite: {
     plugins: [tailwindcss()],
+    css: {
+      transformer: "lightningcss",
+    },
   },
 });

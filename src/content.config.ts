@@ -13,6 +13,7 @@ const docs = defineCollection({
 			"Luminance & Brightness",
 			"Nearest Colour Finders",
 			"Distance & Comparison",
+			"Utility Functions",
 		]),
 		title: z.string(),
 	}),

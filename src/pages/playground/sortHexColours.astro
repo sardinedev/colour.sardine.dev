@@ -1,0 +1,72 @@
+---
+import PlaygroundLayout from "../../layouts/PlaygroundLayout.astro";
+---
+
+<PlaygroundLayout title="sortHexColours">
+  <script slot="script" is:inline type="module">
+    import { sortHexColours } from "https://unpkg.com/@sardine/colour@2.4.0/dist/index.min.js";
+
+    function sortOnSubmit(input) {
+      try {
+        // Split input by commas, semicolons, or whitespace and trim each colour
+        const colours = input
+          .split(/[,;\s]+/)
+          .map((c) => c.trim())
+          .filter((c) => c.length > 0);
+
+        if (colours.length === 0) {
+          throw new Error("Please enter at least one colour");
+        }
+
+        const sorted = sortHexColours(colours);
+        
+        // Display sorted colours with visual swatches
+        let output = '<div style="margin-top: 10px;">';
+        output += '<p style="margin-bottom: 10px;">Sorted colours:</p>';
+        output += '<div style="display: flex; flex-wrap: wrap; gap: 10px;">';
+        
+        sorted.forEach((colour) => {
+          output += `
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+              <div style="
+                width: 60px; 
+                height: 60px; 
+                background-color: ${colour}; 
+                border: 2px solid #444;
+                border-radius: 4px;
+              "></div>
+              <code style="font-size: 12px;">${colour}</code>
+            </div>
+          `;
+        });
+        
+        output += '</div></div>';
+        document.getElementById("result").innerHTML = output;
+      } catch (error) {
+        document.getElementById("result").innerHTML = error;
+      }
+    }
+
+    // Attach event listener to button when DOM is ready
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('sortButton').addEventListener('click', function() {
+        sortOnSubmit(document.getElementById('colours').value);
+      });
+    });
+  </script>
+
+  <div slot="body">
+    <label for="colours">Enter hexadecimal colours (comma-separated)</label>
+    <textarea
+      id="colours"
+      class="input"
+      rows="3"
+      placeholder="#ff0000, #00ff00, #0000ff, #ffff00, #808080, #000000, #ffffff"
+      style="resize: vertical; min-height: 80px; font-family: monospace;"
+    ></textarea>
+    <button type="button" id="sortButton">
+      Sort Colours
+    </button>
+    <label id="result"></label>
+  </div>
+</PlaygroundLayout>

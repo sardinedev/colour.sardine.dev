@@ -43,7 +43,7 @@ import PlaygroundLayout from "../../layouts/PlaygroundLayout.astro";
         output += '</div></div>';
         document.getElementById("result").innerHTML = output;
       } catch (error) {
-        document.getElementById("result").innerHTML = error;
+        document.getElementById("result").innerHTML = error.message;
       }
     }
 
